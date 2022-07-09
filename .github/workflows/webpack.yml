@@ -39,4 +39,4 @@ jobs:
         context: .
         file: Dockerfile
         push: true
-        tags: ${{ secrets.DOCKERHUB_REPO }}/oss/dd-repro:$(date +%s)
+        tags: rnarayana/oss/dd-repro:$(date +%s)
