@@ -10,6 +10,6 @@ RUN apk upgrade --no-cache --available
 RUN ln -sf /dev/stdout /tmp/nginx_access.log && ln -sf /dev/stderr /tmp/nginx_error.log
 
 COPY ./build/ /usr/share/nginx/html
-USER nginx
+# USER nginx
 EXPOSE 8080
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
