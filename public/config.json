@@ -1,0 +1,10 @@
+{
+  "datadog": {
+    "applicationId": "",
+    "clientToken": "",
+    "service": "sample-webapp",
+    "site": "us3.datadoghq.com"
+  },
+  "appEnv": "dev-local",
+  "appVersion": "1.2.3-PullRequest.5603"
+}

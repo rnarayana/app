@@ -3,7 +3,6 @@ import logo from "./logo.svg";
 import "./App.css";
 import { datadogLogs } from "@datadog/browser-logs";
 import { datadogRum } from "@datadog/browser-rum";
-import path from "path";
 
 class App extends React.Component {
   constructor(props: any) {
@@ -25,7 +24,9 @@ class App extends React.Component {
           version: configJSON.appVersion,
           sampleRate: 100,
           premiumSampleRate: 0,
-          trackInteractions: true
+          trackInteractions: true,
+          trackFrustrations: true,
+          allowedTracingOrigins: [window.location.origin]
         });
         datadogLogs.init({
           clientToken: configJSON.datadog.clientToken,
@@ -34,14 +35,19 @@ class App extends React.Component {
           env: configJSON.appEnv,
           version: configJSON.appVersion,
           forwardErrorsToLogs: true,
-          sampleRate: 100,
+          sampleRate: 100
         });
       }
     });
   }
 
   fetchConfig() {
-    return fetch(path.resolve(__dirname, "./externalConfig/config.json")).then((response) =>response.json());
+    return fetch("config.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    }).then((response) => response.json());
   }
 
   render() {
