@@ -9,7 +9,8 @@ RUN apk --no-cache add shadow && \
 RUN apk upgrade --no-cache --available
 RUN ln -sf /dev/stdout /tmp/nginx_access.log && ln -sf /dev/stderr /tmp/nginx_error.log
 
+COPY ./nginx.conf /etc/nginx/nginx.conf
 COPY ./build/ /usr/share/nginx/html
-# USER nginx
-EXPOSE 8080
+
+EXPOSE 80
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
