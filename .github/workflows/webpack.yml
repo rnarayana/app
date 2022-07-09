@@ -39,4 +39,4 @@ jobs:
         context: .
         file: Dockerfile
         push: true
-        tags: rnarayana/oss/dd-repro:$(date +%s)
+        tags: rnarayana/oss:$(date +%s)
