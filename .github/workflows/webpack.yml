@@ -29,3 +29,15 @@ jobs:
 
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag dd-repro:$(date +%s)
+    
+    - name: Login to DockerHub
+      uses: docker/login-action@v2
+      with:
+        username: rnarayana
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+          
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v3.0.0
+      with:        
+        push: true
+        tags: rnarayana/oss:1.0
